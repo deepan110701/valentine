@@ -78,37 +78,23 @@ input {
 #proposal {
   display: none;
   position: fixed;
-  bottom: 80px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-}
-
-/* Stop button */
-#stopBtn {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 8px 16px;
-  border-radius: 20px;
-  background: #fff;
-  color: #ff4d6d;
-  border: none;
-  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- AUDIO -->
-<audio id="thandavam" preload="auto">
+<!-- 🔊 ONLY AUDIO -->
+<audio id="thandavam" loop preload="auto">
   <source src="thandavam_bgm.mp3" type="audio/mpeg">
 </audio>
 
-<!-- LOCK SCREEN -->
+<!-- 🔐 LOCK SCREEN -->
 <div class="container" id="lockScreen">
-  <h1>🔐 Secret Love Page</h1>
+  <h1>🔐 Secret Love Page</h1><br />
   <p>Enter the secret word 💖</p>
   <input type="password" id="pass" placeholder="Hint: What Purus calls you 😉">
   <br><br>
@@ -118,29 +104,34 @@ input {
 <div class="hearts" id="hearts"></div>
 <div class="roses" id="roses"></div>
 
-<!-- MAIN CONTENT -->
+<!-- 💖 MAIN CONTENT -->
 <div class="container" id="mainContent" style="display:none;">
   <h1>Happy Valentine’s Day, Pondati 💚💙</h1>
   <div class="heart">💖</div>
-  <p>
-    From college friends to office colleagues,<br>
-    from friendship to love 💕<br><br>
-    I choose you — today and always.
-    <br><br>
-    Forever yours,<br>
-    <strong>Purus</strong>
-  </p>
+    <p>
+      To my beautiful girl,<br />
+      Every moment with you feels special.
+      <br />
+      It started as a simple friendship in college, grew stronger as office colleagues, and somewhere along the way, that friendship turned into love — every step with you has been beautiful.
+      <br />
+      I choose you, today and always.
+      <br />
+      Forever yours,
+      <br />
+      <strong>Your Gentleman</strong>
+    </p>
+
   <button class="btn" onclick="showProposal()">💍 Will you be mine forever?</button>
 </div>
 
-<!-- PROPOSAL -->
+<!-- 💍 PROPOSAL -->
 <div id="proposal">
   <h2>Will you be mine forever? 💖</h2>
-  <button class="btn" onclick="yes()">Yes 😍</button>
-  <button class="btn" onclick="no()">No 🙈</button>
+  <button class="btn" onclick="yes()">Uhh 🫂</button>
+  <button class="btn" onclick="no()">Huku 😏</button>
 </div>
 
-<!-- FINAL SCREEN -->
+<!-- 💖 FINAL SCREEN -->
 <div class="container" id="finalScreen" style="display:none;">
   <h1>Thangapulla 💖💋</h1>
   <div class="heart">💖</div>
@@ -154,43 +145,60 @@ input {
   </footer>
 </div>
 
-<button id="stopBtn" onclick="stopMusic()">⏹️ Stop Music</button>
-
 <script>
-let playCount = 0;
-const music = document.getElementById("thandavam");
-
 function unlock() {
   const pass = document.getElementById("pass").value.toLowerCase();
-  if (pass === "macha" || pass === "mylu") {
-    lockScreen.style.display = "none";
-    mainContent.style.display = "flex";
+   if(pass === ""){
+		alert('How Smart, I know you😅.');
+	  } else if (pass === "macha" || pass === "mylu") {
+    document.getElementById("lockScreen").style.display = "none";
+    document.getElementById("mainContent").style.display = "flex";
   } else {
-    alert("Wrong secret 😜");
+    alert("Hukuuuu........ You forgot, lets Divorce!!");
   }
 }
 
 function showProposal() {
-  proposal.style.display = "block";
+  document.getElementById("proposal").style.display = "block";
 }
 
 function yes() {
-  mainContent.style.display = "none";
-  proposal.style.display = "none";
-  finalScreen.style.display = "flex";
-  stopBtn.style.display = "block";
+  const music = document.getElementById("thandavam");
 
-  playCount = 0;
+  // Hide previous screens
+  document.getElementById("mainContent").style.display = "none";
+  document.getElementById("proposal").style.display = "none";
+
+  // Show final screen
+  document.getElementById("finalScreen").style.display = "flex";
+
+  // Play Thandavam (PLAYS 100%)
   music.currentTime = 0;
-  music.volume = 1;
-
-  heartExplosion();
+  music.volume = 1.0;
   music.play();
 }
 
-music.addEventListener("ended", () => {
-  playCount++;
-  if (playCount < 2) {
-    music.currentTime = 0;
-    music.play();
-  } else {
+function no() {
+  alert("Nice try 😏 You are already mine ❤️");
+}
+
+function createFloat(container, symbol) {
+  const el = document.createElement("div");
+  el.className = "float";
+  el.innerText = symbol;
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.fontSize = 20 + Math.random() * 30 + "px";
+  container.appendChild(el);
+  setTimeout(() => el.remove(), 8000);
+}
+
+setInterval(() => {
+  if (document.getElementById("mainContent").style.display === "flex") {
+    createFloat(hearts, "💖");
+    createFloat(roses, "🌹");
+  }
+}, 500);
+</script>
+
+</body>
+</html>
