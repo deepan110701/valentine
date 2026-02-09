@@ -6,9 +6,13 @@
 <title>For My Valentine ❤️</title>
 
 <style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 
 body {
-  margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #ff758c, #ff7eb3);
   color: white;
@@ -17,18 +21,24 @@ body {
 }
 
 .container {
-  
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-	  margin: 0;
-  padding: 0;
-  height: 100%;
+  padding: 20px;
 }
 
-h1 { font-size: 3rem; }
-p { max-width: 600px; font-size: 1.2rem; line-height: 1.6; }
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+p {
+  max-width: 600px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
 
 .heart {
   font-size: 4rem;
@@ -85,19 +95,51 @@ input {
   left: 50%;
   transform: translateX(-50%);
 }
+
+/* ❤️ FINAL SCREEN WITH BLUR BACKGROUND */
+#finalScreen {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Blurred background image */
+#finalScreen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("101.jpeg") center / cover no-repeat;
+  filter: blur(6px);
+  transform: scale(1.1);
+  z-index: 0;
+}
+
+/* Dark overlay */
+#finalScreen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1;
+}
+
+/* Content above blur */
+#finalScreen > * {
+  position: relative;
+  z-index: 2;
+}
 </style>
 </head>
 
 <body>
 
-<!-- 🔊 ONLY AUDIO -->
-<audio id="thandavam" loop preload="auto">
+<!-- 🔊 AUDIO -->
+<audio id="thandavam" preload="auto">
   <source src="thandavam_bgm.mp3" type="audio/mpeg">
 </audio>
 
 <!-- 🔐 LOCK SCREEN -->
 <div class="container" id="lockScreen">
-  <h1>🔐 Secret Love Page</h1><br />
+  <h1>🔐 Secret Love Page</h1>
   <p>Enter the secret word 💖</p>
   <input type="password" id="pass" placeholder="Hint: What Purus calls you 😉">
   <br><br>
@@ -111,19 +153,16 @@ input {
 <div class="container" id="mainContent" style="display:none;">
   <h1>Happy Valentine’s Day, Pondati 💚💙</h1>
   <div class="heart">💖</div>
-    <p>
-      To my beautiful girl,<br />
-      Every moment with you feels special.
-      <br />
-      It started as a simple friendship in college, grew stronger as office colleagues, and somewhere along the way, that friendship turned into love — every step with you has been beautiful.
-      <br />
-      I choose you, today and always.
-      <br />
-      Forever yours,
-      <br />
-      <strong>Your Gentleman</strong>
-    </p>
-
+  <p>
+    To my beautiful girl,<br><br>
+    It started as a simple friendship in college,
+    grew stronger as office colleagues,
+    and somewhere along the way,
+    that friendship turned into love.<br><br>
+    I choose you, today and always.<br><br>
+    Forever yours,<br>
+    <strong>Your Gentleman</strong>
+  </p>
   <button class="btn" onclick="showProposal()">💍 Will you be mine forever?</button>
 </div>
 
@@ -136,13 +175,13 @@ input {
 
 <!-- 💖 FINAL SCREEN -->
 <div class="container" id="finalScreen" style="display:none;">
-  <h1>Thangapulla 💖💋</h1><br />
-  <div class="heart">💖</div><br />
+  <h1>Thangapulla 💖💋</h1>
+  <div class="heart">💖</div>
   <p>
     Close your eyes for a moment…<br><br>
     You’ve been waiting for this for so long 💖<br><br>
-    Now tell me… can you guess the gift? 😉💋<br />
-  </p><br /><br />
+    Now tell me… can you guess the gift? 😉💋
+  </p>
   <footer>
     With all my love,<br><strong>Purus</strong>
   </footer>
@@ -150,34 +189,37 @@ input {
 
 <script>
 function unlock() {
-  const pass = document.getElementById("pass").value.toLowerCase();
-   if(pass === ""){
-		alert('How Smart, I know you😅.');
-	  } else if (pass === "macha" || pass === "mylu") {
-    document.getElementById("lockScreen").style.display = "none";
-    document.getElementById("mainContent").style.display = "flex";
+  const passInput = document.getElementById("pass");
+  const pass = passInput.value.trim().toLowerCase();
+
+  if (pass === "") {
+    alert("Hey 😅 enter the secret word first 💖");
+    passInput.focus();
+    return;
+  }
+
+  if (pass === "macha" || pass === "mylu") {
+    lockScreen.style.display = "none";
+    mainContent.style.display = "flex";
   } else {
-    alert("Hukuuuu........ You forgot, lets Divorce!!");
+    alert("Hukuuuu… you forgot 😏");
+    passInput.value = "";
+    passInput.focus();
   }
 }
 
 function showProposal() {
-  document.getElementById("proposal").style.display = "block";
+  proposal.style.display = "block";
 }
 
 function yes() {
+  mainContent.style.display = "none";
+  proposal.style.display = "none";
+  finalScreen.style.display = "flex";
+
   const music = document.getElementById("thandavam");
-
-  // Hide previous screens
-  document.getElementById("mainContent").style.display = "none";
-  document.getElementById("proposal").style.display = "none";
-
-  // Show final screen
-  document.getElementById("finalScreen").style.display = "flex";
-
-  // Play Thandavam (PLAYS 100%)
   music.currentTime = 0;
-  music.volume = 1.0;
+  music.volume = 1;
   music.play();
 }
 
@@ -196,7 +238,7 @@ function createFloat(container, symbol) {
 }
 
 setInterval(() => {
-  if (document.getElementById("mainContent").style.display === "flex") {
+  if (mainContent.style.display === "flex") {
     createFloat(hearts, "💖");
     createFloat(roses, "🌹");
   }
@@ -205,8 +247,3 @@ setInterval(() => {
 
 </body>
 </html>
-
-
-
-
-
