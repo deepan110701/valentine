@@ -22,7 +22,6 @@ body {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  z-index: 1;
 }
 
 h1 { font-size: 3rem; }
@@ -56,12 +55,12 @@ input {
   text-align: center;
 }
 
-.hearts,.roses {
+/* Floating hearts & roses */
+.hearts, .roses {
   position: fixed;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
 }
 
 .float {
@@ -82,32 +81,26 @@ input {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 AUDIO -->
-<audio id="bgm" loop>
-  <source src="benim-porta-var.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="ringtone">
-  <source src="thandavam-ringtone.mp3" type="audio/mpeg">
+<!-- 🔊 ONLY AUDIO -->
+<audio id="thandavam">
+  <source src="thandavam_bgm.mp3" type="audio/mpeg">
 </audio>
 
 <!-- 🔐 LOCK SCREEN -->
 <div class="container" id="lockScreen">
-  <h1>🔐 Secret Love Page</h1><br>
+  <h1>🔐 Secret Love Page</h1>
   <p>Enter the secret word 💖</p>
   <input type="password" id="pass" placeholder="Hint: What Purus calls you 😉">
   <br><br>
   <button class="btn" onclick="unlock()">Unlock</button>
 </div>
 
-<!-- FLOATING -->
 <div class="hearts" id="hearts"></div>
 <div class="roses" id="roses"></div>
 
@@ -116,12 +109,12 @@ input {
   <h1>Happy Valentine’s Day, Pondati 💚💙</h1>
   <div class="heart">💖</div>
   <p>
-    From college friends, to office colleagues, to lovers 💕<br><br>
-    Every step with you has been beautiful.<br><br>
+    From college friends to office colleagues,<br>
+    from friendship to love 💕<br><br>
     I choose you — today and always.
     <br><br>
     Forever yours,<br>
-    <strong>Your Gentleman</strong>
+    <strong>Purus</strong>
   </p>
 
   <button class="btn" onclick="showProposal()">💍 Will you be mine forever?</button>
@@ -140,9 +133,6 @@ function unlock() {
   if (pass === "macha" || pass === "mylu") {
     document.getElementById("lockScreen").style.display = "none";
     document.getElementById("mainContent").style.display = "flex";
-    const bgm = document.getElementById("bgm");
-    bgm.volume = 0.6;
-    bgm.play();
   } else {
     alert("Wrong secret 😜");
   }
@@ -153,12 +143,10 @@ function showProposal() {
 }
 
 function yes() {
-  const bgm = document.getElementById("bgm");
-  const ring = document.getElementById("ringtone");
-
-  bgm.pause();
-  ring.currentTime = 0;
-  ring.play();
+  const music = document.getElementById("thandavam");
+  music.currentTime = 0;
+  music.volume = 1.0;
+  music.play(); // 🔥 PLAYS ONCE
 
   document.body.innerHTML = `
     <div class="container">
