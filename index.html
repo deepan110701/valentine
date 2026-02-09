@@ -78,21 +78,48 @@ input {
 #proposal {
   display: none;
   position: fixed;
-  bottom: 20px;
+  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+/* Stop button */
+#stopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: #fff;
+  color: #ff4d6d;
+  border: none;
+  cursor: pointer;
+}
+
+/* Screen shake */
+@keyframes shake {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(5px,5px); }
+  50% { transform: translate(-5px,-5px); }
+  75% { transform: translate(5px,-5px); }
+  100% { transform: translate(0,0); }
+}
+
+.shake {
+  animation: shake 0.15s infinite;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🔊 ONLY AUDIO -->
-<audio id="thandavam" loop preload="auto">
+<!-- AUDIO -->
+<audio id="thandavam" preload="auto">
   <source src="thandavam_bgm.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 🔐 LOCK SCREEN -->
+<!-- LOCK SCREEN -->
 <div class="container" id="lockScreen">
   <h1>🔐 Secret Love Page</h1>
   <p>Enter the secret word 💖</p>
@@ -104,7 +131,7 @@ input {
 <div class="hearts" id="hearts"></div>
 <div class="roses" id="roses"></div>
 
-<!-- 💖 MAIN CONTENT -->
+<!-- MAIN CONTENT -->
 <div class="container" id="mainContent" style="display:none;">
   <h1>Happy Valentine’s Day, Pondati 💚💙</h1>
   <div class="heart">💖</div>
@@ -116,18 +143,17 @@ input {
     Forever yours,<br>
     <strong>Purus</strong>
   </p>
-
   <button class="btn" onclick="showProposal()">💍 Will you be mine forever?</button>
 </div>
 
-<!-- 💍 PROPOSAL -->
+<!-- PROPOSAL -->
 <div id="proposal">
   <h2>Will you be mine forever? 💖</h2>
   <button class="btn" onclick="yes()">Yes 😍</button>
   <button class="btn" onclick="no()">No 🙈</button>
 </div>
 
-<!-- 💖 FINAL SCREEN -->
+<!-- FINAL SCREEN -->
 <div class="container" id="finalScreen" style="display:none;">
   <h1>Thangapulla 💖💋</h1>
   <div class="heart">💖</div>
@@ -141,39 +167,99 @@ input {
   </footer>
 </div>
 
+<button id="stopBtn" onclick="stopMusic()">⏹️ Stop Music</button>
+
 <script>
+let playCount = 0;
+const music = document.getElementById("thandavam");
+
 function unlock() {
   const pass = document.getElementById("pass").value.toLowerCase();
   if (pass === "macha" || pass === "mylu") {
-    document.getElementById("lockScreen").style.display = "none";
-    document.getElementById("mainContent").style.display = "flex";
+    lockScreen.style.display = "none";
+    mainContent.style.display = "flex";
   } else {
     alert("Wrong secret 😜");
   }
 }
 
 function showProposal() {
-  document.getElementById("proposal").style.display = "block";
+  proposal.style.display = "block";
 }
 
 function yes() {
-  const music = document.getElementById("thandavam");
+  mainContent.style.display = "none";
+  proposal.style.display = "none";
+  finalScreen.style.display = "flex";
+  stopBtn.style.display = "block";
 
-  // Hide previous screens
-  document.getElementById("mainContent").style.display = "none";
-  document.getElementById("proposal").style.display = "none";
-
-  // Show final screen
-  document.getElementById("finalScreen").style.display = "flex";
-
-  // Play Thandavam (PLAYS 100%)
+  playCount = 0;
   music.currentTime = 0;
-  music.volume = 1.0;
+  music.volume = 1;
+
+  heartExplosion();
+  startShake();
   music.play();
+}
+
+music.addEventListener("ended", () => {
+  playCount++;
+  if (playCount < 2) {
+    music.currentTime = 0;
+    music.play();
+  } else {
+    fadeOutMusic();
+  }
+});
+
+function stopMusic() {
+  music.pause();
+  music.currentTime = 0;
+  music.volume = 1;
+  playCount = 0;
+  stopShake();
 }
 
 function no() {
   alert("Nice try 😏 You are already mine ❤️");
+}
+
+/* Effects */
+function startShake() {
+  document.body.classList.add("shake");
+}
+
+function stopShake() {
+  document.body.classList.remove("shake");
+}
+
+function fadeOutMusic() {
+  let fade = setInterval(() => {
+    if (music.volume > 0.05) {
+      music.volume -= 0.05;
+    } else {
+      music.pause();
+      stopShake();
+      clearInterval(fade);
+    }
+  }, 200);
+}
+
+function heartExplosion() {
+  for (let i = 0; i < 30; i++) {
+    const h = document.createElement("div");
+    h.innerText = "💖";
+    h.style.position = "fixed";
+    h.style.left = "50%";
+    h.style.top = "50%";
+    h.style.fontSize = "24px";
+    h.style.pointerEvents = "none";
+    h.style.transform =
+      `translate(-50%,-50%) translate(${Math.random()*300-150}px,${Math.random()*300-150}px)`;
+    h.style.transition = "all 1.5s ease-out";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 1500);
+  }
 }
 
 function createFloat(container, symbol) {
@@ -187,7 +273,7 @@ function createFloat(container, symbol) {
 }
 
 setInterval(() => {
-  if (document.getElementById("mainContent").style.display === "flex") {
+  if (mainContent.style.display === "flex") {
     createFloat(hearts, "💖");
     createFloat(roses, "🌹");
   }
@@ -196,4 +282,3 @@ setInterval(() => {
 
 </body>
 </html>
-
