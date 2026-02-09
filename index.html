@@ -78,7 +78,9 @@ input {
 #proposal {
   display: none;
   position: fixed;
-
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 </style>
 </head>
@@ -123,11 +125,11 @@ input {
 </div>
 
 <!-- 💍 PROPOSAL -->
-    <div id="proposal" style="display:none; margin-top:20px;">
-      <h2>Will you be mine forever, Pondati? 💖</h2>
-      <button class="btn" onclick="yes()">Uhhh 😍</button>
-      <button class="btn" onclick="no()">Huku 🙈</button>
-    </div>
+<div id="proposal">
+  <h2>Will you be mine forever? 💖</h2>
+  <button class="btn" onclick="yes()">Uhh 🫂</button>
+  <button class="btn" onclick="no()">Huku 😏</button>
+</div>
 
 <!-- 💖 FINAL SCREEN -->
 <div class="container" id="finalScreen" style="display:none;">
@@ -200,5 +202,3 @@ setInterval(() => {
 
 </body>
 </html>
-
-
