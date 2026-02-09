@@ -96,19 +96,6 @@ input {
   border: none;
   cursor: pointer;
 }
-
-/* Screen shake */
-@keyframes shake {
-  0% { transform: translate(0,0); }
-  25% { transform: translate(5px,5px); }
-  50% { transform: translate(-5px,-5px); }
-  75% { transform: translate(5px,-5px); }
-  100% { transform: translate(0,0); }
-}
-
-.shake {
-  animation: shake 0.15s infinite;
-}
 </style>
 </head>
 
@@ -198,7 +185,6 @@ function yes() {
   music.volume = 1;
 
   heartExplosion();
-  startShake();
   music.play();
 }
 
@@ -208,77 +194,3 @@ music.addEventListener("ended", () => {
     music.currentTime = 0;
     music.play();
   } else {
-    fadeOutMusic();
-  }
-});
-
-function stopMusic() {
-  music.pause();
-  music.currentTime = 0;
-  music.volume = 1;
-  playCount = 0;
-  stopShake();
-}
-
-function no() {
-  alert("Nice try 😏 You are already mine ❤️");
-}
-
-/* Effects */
-function startShake() {
-  document.body.classList.add("shake");
-}
-
-function stopShake() {
-  document.body.classList.remove("shake");
-}
-
-function fadeOutMusic() {
-  let fade = setInterval(() => {
-    if (music.volume > 0.05) {
-      music.volume -= 0.05;
-    } else {
-      music.pause();
-      stopShake();
-      clearInterval(fade);
-    }
-  }, 200);
-}
-
-function heartExplosion() {
-  for (let i = 0; i < 30; i++) {
-    const h = document.createElement("div");
-    h.innerText = "💖";
-    h.style.position = "fixed";
-    h.style.left = "50%";
-    h.style.top = "50%";
-    h.style.fontSize = "24px";
-    h.style.pointerEvents = "none";
-    h.style.transform =
-      `translate(-50%,-50%) translate(${Math.random()*300-150}px,${Math.random()*300-150}px)`;
-    h.style.transition = "all 1.5s ease-out";
-    document.body.appendChild(h);
-    setTimeout(() => h.remove(), 1500);
-  }
-}
-
-function createFloat(container, symbol) {
-  const el = document.createElement("div");
-  el.className = "float";
-  el.innerText = symbol;
-  el.style.left = Math.random() * 100 + "vw";
-  el.style.fontSize = 20 + Math.random() * 30 + "px";
-  container.appendChild(el);
-  setTimeout(() => el.remove(), 8000);
-}
-
-setInterval(() => {
-  if (mainContent.style.display === "flex") {
-    createFloat(hearts, "💖");
-    createFloat(roses, "🌹");
-  }
-}, 500);
-</script>
-
-</body>
-</html>
