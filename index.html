@@ -88,7 +88,7 @@ input {
 <body>
 
 <!-- 🔊 ONLY AUDIO -->
-<audio id="thandavam">
+<audio id="thandavam" preload="auto">
   <source src="thandavam_bgm.mp3" type="audio/mpeg">
 </audio>
 
@@ -127,6 +127,20 @@ input {
   <button class="btn" onclick="no()">No 🙈</button>
 </div>
 
+<!-- 💖 FINAL SCREEN -->
+<div class="container" id="finalScreen" style="display:none;">
+  <h1>Thangapulla 💖💋</h1>
+  <div class="heart">💖</div>
+  <p>
+    Close your eyes for a moment…<br><br>
+    You’ve been waiting for this for so long 💖<br><br>
+    Now tell me… can you guess the gift? 😉💋
+  </p>
+  <footer>
+    With all my love,<br><strong>Purus</strong>
+  </footer>
+</div>
+
 <script>
 function unlock() {
   const pass = document.getElementById("pass").value.toLowerCase();
@@ -144,23 +158,18 @@ function showProposal() {
 
 function yes() {
   const music = document.getElementById("thandavam");
+
+  // Hide previous screens
+  document.getElementById("mainContent").style.display = "none";
+  document.getElementById("proposal").style.display = "none";
+
+  // Show final screen
+  document.getElementById("finalScreen").style.display = "flex";
+
+  // Play Thandavam (PLAYS 100%)
   music.currentTime = 0;
   music.volume = 1.0;
-  music.play(); // 🔥 PLAYS ONCE
-
-  document.body.innerHTML = `
-    <div class="container">
-      <h1>Thangapulla 💖💋</h1>
-      <div class="heart">💖</div>
-      <p>
-        Close your eyes for a moment…<br><br>
-        You’ve been waiting for this for so long 💖<br><br>
-        Now tell me… can you guess the gift? 😉💋
-      </p>
-      <footer>
-        With all my love,<br><strong>Purus</strong>
-      </footer>
-    </div>`;
+  music.play();
 }
 
 function no() {
