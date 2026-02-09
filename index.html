@@ -1,156 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For My Valentine ❤️</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      color: white;
-      text-align: center;
-    }
-    .container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      line-height: 1.6;
-    }
-    .heart {
-      font-size: 4rem;
-      animation: beat 1s infinite;
-      margin: 20px 0;
-    }
-    .hearts, .roses {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
-    .float {
-      position: absolute;
-      font-size: 24px;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.8;
-    }
-    @keyframes floatUp {
-      0% { transform: translateY(100vh) scale(0.8); opacity: 0; }
-      10% { opacity: 1; }
-      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Valentine ❤️</title>
 
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-    .btn {
-      margin-top: 30px;
-      padding: 12px 24px;
-      background: white;
-      color: #ff4d6d;
-      border: none;
-      border-radius: 25px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #ffe3ea;
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-  input {
-      padding: 10px;
-      border-radius: 20px;
-      border: none;
-      text-align: center;
-    }
-  </style>
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1;
+}
+
+h1 { font-size: 3rem; }
+p { max-width: 600px; font-size: 1.2rem; line-height: 1.6; }
+
+.heart {
+  font-size: 4rem;
+  animation: beat 1s infinite;
+}
+
+@keyframes beat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.btn {
+  padding: 12px 24px;
+  margin: 10px;
+  border-radius: 25px;
+  border: none;
+  background: white;
+  color: #ff4d6d;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+input {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+}
+
+.hearts,.roses {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.float {
+  position: absolute;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh); opacity: 1; }
+}
+
+/* Proposal fixed bottom */
+#proposal {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+</style>
 </head>
+
 <body>
-  <div class="lock-screen" id="lockScreen">
-    <h1>🔐 Secret Love Page</h1><br/> <br/> <br/> <br/>
-    <h4>Enter the secret word to unlock 💖<br /></h4>
-    <input type="password" id="pass" placeholder="Hint: What Purus calls you 🤔" />
-    <br /><br /><br/>
-    <button class="btn" onclick="unlock()">Unlock</button>
-  </div>
 
-  <div class="hearts" id="hearts"></div>
-  <div class="roses" id="roses"></div>
-
-  <div class="container" id="mainContent" style="display:none; position:relative; z-index:1;">
-    <h1>Happy Valentine’s Day, Pondati 💚💙</h1>
-    <div class="heart">💖</div>
-    <p>
-      To my beautiful girl,<br />
-      Every moment with you feels special.
-      <br />
-      It started as a simple friendship in college, grew stronger as office colleagues, and somewhere along the way, that friendship turned into love — every step with you has been beautiful.
-      <br />
-      I choose you, today and always.
-      <br />
-      Forever yours,
-      <br />
-      <strong>Your Gentleman</strong>
-    </p>
-    <button class="btn" onclick="showProposal()">💍 Will you be mine forever?</button>
-    <div id="proposal" style="display:none; margin-top:20px;">
-      <h2>Will you be mine forever, Pondati? 💖</h2>
-      <button class="btn" onclick="yes()">Uhhh 😍</button>
-      <button class="btn" onclick="no()">Huku 🙈</button>
-    </div>
-    <footer>
-      Made with ❤️ just for you
-    </footer>
-  </div>
-  <audio id="thandavam">
-  <source src="thandavam_bgm.mp3" type="audio/mpeg">
+<!-- 🎵 AUDIO -->
+<audio id="bgm" loop>
+  <source src="benim-porta-var.mp3" type="audio/mpeg">
 </audio>
 
+<audio id="ringtone">
+  <source src="thandavam-ringtone.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🔐 LOCK SCREEN -->
+<div class="container" id="lockScreen">
+  <h1>🔐 Secret Love Page</h1><br>
+  <p>Enter the secret word 💖</p>
+  <input type="password" id="pass" placeholder="Hint: What Purus calls you 😉">
+  <br><br>
+  <button class="btn" onclick="unlock()">Unlock</button>
+</div>
+
+<!-- FLOATING -->
+<div class="hearts" id="hearts"></div>
+<div class="roses" id="roses"></div>
+
+<!-- 💖 MAIN CONTENT -->
+<div class="container" id="mainContent" style="display:none;">
+  <h1>Happy Valentine’s Day, Pondati 💚💙</h1>
+  <div class="heart">💖</div>
+  <p>
+    From college friends, to office colleagues, to lovers 💕<br><br>
+    Every step with you has been beautiful.<br><br>
+    I choose you — today and always.
+    <br><br>
+    Forever yours,<br>
+    <strong>Your Gentleman</strong>
+  </p>
+
+  <button class="btn" onclick="showProposal()">💍 Will you be mine forever?</button>
+</div>
+
+<!-- 💍 PROPOSAL -->
+<div id="proposal">
+  <h2>Will you be mine forever? 💖</h2>
+  <button class="btn" onclick="yes()">Yes 😍</button>
+  <button class="btn" onclick="no()">No 🙈</button>
+</div>
+
 <script>
-    function unlock() {
-      const pass = document.getElementById('pass').value.toLowerCase();
-      if (pass === 'macha'|| pass === 'mylu') {
-        document.getElementById('lockScreen').style.display = 'none';
-        document.getElementById('mainContent').style.display = 'flex';
-      } else {
-        alert('Hukuuuu........, you forgot, lets Divorce!!');
-      }
-    }
-    function showProposal() {
-      document.getElementById('proposal').style.display = 'block';
-    }
+function unlock() {
+  const pass = document.getElementById("pass").value.toLowerCase();
+  if (pass === "macha" || pass === "mylu") {
+    document.getElementById("lockScreen").style.display = "none";
+    document.getElementById("mainContent").style.display = "flex";
+    const bgm = document.getElementById("bgm");
+    bgm.volume = 0.6;
+    bgm.play();
+  } else {
+    alert("Wrong secret 😜");
+  }
+}
+
+function showProposal() {
+  document.getElementById("proposal").style.display = "block";
+}
 
 function yes() {
-  const thandavam = document.getElementById("thandavam");
+  const bgm = document.getElementById("bgm");
+  const ring = document.getElementById("ringtone");
 
-  // Play Thandavam once
-  thandavam.currentTime = 0;
-  thandavam.volume = 1.0;
-  thandavam.play();
+  bgm.pause();
+  ring.currentTime = 0;
+  ring.play();
 
-  // Show final message
   document.body.innerHTML = `
     <div class="container">
       <h1>Thangapulla 💖💋</h1>
@@ -161,36 +170,32 @@ function yes() {
         Now tell me… can you guess the gift? 😉💋
       </p>
       <footer>
-        With all my love,<br>
-        <strong>Purus</strong>
+        With all my love,<br><strong>Purus</strong>
       </footer>
-    </div>
-  `;
+    </div>`;
 }
+
+function no() {
+  alert("Nice try 😏 You are already mine ❤️");
+}
+
+function createFloat(container, symbol) {
+  const el = document.createElement("div");
+  el.className = "float";
+  el.innerText = symbol;
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.fontSize = 20 + Math.random() * 30 + "px";
+  container.appendChild(el);
+  setTimeout(() => el.remove(), 8000);
+}
+
+setInterval(() => {
+  if (document.getElementById("mainContent").style.display === "flex") {
+    createFloat(hearts, "💖");
+    createFloat(roses, "🌹");
+  }
+}, 500);
 </script>
 
-
-    function createFloat(container, symbol) {
-      const el = document.createElement('div');
-      el.className = 'float';
-      el.innerText = symbol;
-      el.style.left = Math.random() * 100 + 'vw';
-      el.style.animationDuration = 4 + Math.random() * 4 + 's';
-      el.style.fontSize = 20 + Math.random() * 30 + 'px';
-      container.appendChild(el);
-      setTimeout(() => el.remove(), 8000);
-    }
-
-    setInterval(() => {
-      const main = document.getElementById('mainContent');
-      if (main.style.display === 'flex') {
-        createFloat(document.getElementById('hearts'), '💖');
-        createFloat(document.getElementById('roses'), '🌹');
-      }
-    }, 500);
-    function no() {
-      alert('Nice try 😏 You are already mine ❤️');
-    }
-  </script>
 </body>
 </html>
