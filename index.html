@@ -124,6 +124,10 @@
       Made with ❤️ just for you
     </footer>
   </div>
+  <audio id="thandavam">
+  <source src="thandavam_bgm.mp3" type="audio/mpeg">
+</audio>
+
 <script>
     function unlock() {
       const pass = document.getElementById('pass').value.toLowerCase();
@@ -137,25 +141,34 @@
     function showProposal() {
       document.getElementById('proposal').style.display = 'block';
     }
-    function yes() {
-      document.body.innerHTML = `
-        <div class="container">
-          <h1>Thangapulla💋</h1>
-          <div class="heart">💖</div>
-          <p>
-            
-            Close your eyes for a moment…
-            <br /><br />
-            You’ve been waiting for this for so long 💖
-            <br /><br />
-            Now tell me… can you guess what the gift is? 😉
-          </p>
-          <footer>
-            With all my love,<br />
-            <strong>Purus</strong>
-          </footer>
-        </div>`;
-    }
+
+function yes() {
+  const thandavam = document.getElementById("thandavam");
+
+  // Play Thandavam once
+  thandavam.currentTime = 0;
+  thandavam.volume = 1.0;
+  thandavam.play();
+
+  // Show final message
+  document.body.innerHTML = `
+    <div class="container">
+      <h1>Thangapulla 💖💋</h1>
+      <div class="heart">💖</div>
+      <p>
+        Close your eyes for a moment…<br><br>
+        You’ve been waiting for this for so long 💖<br><br>
+        Now tell me… can you guess the gift? 😉💋
+      </p>
+      <footer>
+        With all my love,<br>
+        <strong>Purus</strong>
+      </footer>
+    </div>
+  `;
+}
+</script>
+
 
     function createFloat(container, symbol) {
       const el = document.createElement('div');
