@@ -11,6 +11,11 @@
   padding: 0;
   height: 100%;
 }
+	h1 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -21,12 +26,14 @@ body {
 }
 
 .container {
-  min-height: 100vh;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+	  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 h1 { font-size: 3rem; }
@@ -99,7 +106,7 @@ input {
 
 <!-- 🔐 LOCK SCREEN -->
 <div class="container" id="lockScreen">
-  <h1>🔐 Secret Love Page</h1><br />
+  <h1>🔐 Secret Love Page</h1>
   <p>Enter the secret word 💖</p>
   <input type="password" id="pass" placeholder="Hint: What Purus calls you 😉">
   <br><br>
@@ -207,4 +214,5 @@ setInterval(() => {
 
 </body>
 </html>
+
 
