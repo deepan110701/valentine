@@ -21,7 +21,12 @@
     text-align:center;
     z-index:2;
   }
-  .page.active{display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .page.active{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center
+  }
   .card{
     width:min(720px,94vw);
     padding:30px 22px;
@@ -34,175 +39,410 @@
   h1{font-size:clamp(2rem,8vw,4.5rem);margin:8px 0 14px}
   h2{font-size:clamp(1.7rem,6vw,3rem);margin:5px 0 16px}
   h3{font-size:1.35rem}
-  p{font-size:clamp(1rem,3.8vw,1.25rem);line-height:1.75;margin:12px auto;max-width:650px}
-  .eyebrow{letter-spacing:3px;text-transform:uppercase;font-size:.78rem;opacity:.8}
+  p{
+    font-size:clamp(1rem,3.8vw,1.25rem);
+    line-height:1.75;
+    margin:12px auto;
+    max-width:650px
+  }
+  .eyebrow{
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-size:.78rem;
+    opacity:.8
+  }
   .heart{color:#ffd9e4}
   .btn{
-    border:0;border-radius:999px;padding:13px 24px;margin:8px;
-    cursor:pointer;background:#fff;color:#a20d3c;font-weight:bold;
+    border:0;
+    border-radius:999px;
+    padding:13px 24px;
+    margin:8px;
+    cursor:pointer;
+    background:#fff;
+    color:#a20d3c;
+    font-weight:bold;
     box-shadow:0 8px 25px rgba(0,0,0,.18);
     transition:.25s transform,.25s box-shadow;
   }
-  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.25)}
-  .btn.dark{background:#65052a;color:#fff;border:1px solid rgba(255,255,255,.3)}
+  .btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 30px rgba(0,0,0,.25)
+  }
+  .btn.dark{
+    background:#65052a;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.3)
+  }
   input{
     width:min(340px,90%);
-    padding:14px 18px;border-radius:999px;border:0;outline:0;
-    text-align:center;margin:10px 0;background:rgba(255,255,255,.95);color:#7d1237;
+    padding:14px 18px;
+    border-radius:999px;
+    border:0;
+    outline:0;
+    text-align:center;
+    margin:10px 0;
+    background:rgba(255,255,255,.95);
+    color:#7d1237;
   }
   .hidden{display:none!important}
-  .photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px auto;max-width:620px}
+  .photo-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin:20px auto;
+    max-width:620px
+  }
   .photo{
-    min-height:190px;border-radius:18px;
-    background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,.05));
+    min-height:190px;
+    border-radius:18px;
+    background:linear-gradient(
+      135deg,
+      rgba(255,255,255,.18),
+      rgba(255,255,255,.05)
+    );
     border:1px dashed rgba(255,255,255,.45);
-    display:flex;align-items:center;justify-content:center;padding:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
   }
   .gift{
-    margin:18px auto;padding:24px;border-radius:22px;
-    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+    margin:18px auto;
+    padding:24px;
+    border-radius:22px;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.22);
     max-width:600px;
   }
-  .big-emoji{font-size:clamp(4rem,18vw,8rem);line-height:1;margin:14px}
-  .choice{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+  .big-emoji{
+    font-size:clamp(4rem,18vw,8rem);
+    line-height:1;
+    margin:14px
+  }
+  .choice{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px
+  }
   .choice .btn{background:rgba(255,255,255,.92)}
   .toast{
-    position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
-    background:#4f0624;color:#fff;padding:12px 18px;border-radius:999px;
-    opacity:0;pointer-events:none;transition:.3s;z-index:30;
+    position:fixed;
+    left:50%;
+    bottom:28px;
+    transform:translateX(-50%) translateY(20px);
+    background:#4f0624;
+    color:#fff;
+    padding:12px 18px;
+    border-radius:999px;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    z-index:30;
     box-shadow:0 8px 30px rgba(0,0,0,.3)
   }
-  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-  .hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+  .toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0)
+  }
+  .hearts{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:1
+  }
   .float-heart{
-    position:absolute;bottom:-40px;opacity:.75;
+    position:absolute;
+    bottom:-40px;
+    opacity:.75;
     animation:rise linear infinite;
-    filter:drop-shadow(0 0 7px rgba(255,220,230,.5));
+    filter:drop-shadow(0 0 7px rgba(255,220,230,.5))
   }
   @keyframes rise{
-    from{transform:translateY(0) rotate(0deg);opacity:0}
+    from{
+      transform:translateY(0) rotate(0deg);
+      opacity:0
+    }
     10%{opacity:.8}
-    to{transform:translateY(-115vh) rotate(360deg);opacity:0}
+    to{
+      transform:translateY(-115vh) rotate(360deg);
+      opacity:0
+    }
   }
   .fade{animation:fade .7s ease}
-  @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  .reveal{margin-top:15px;padding:18px;border-radius:18px;background:rgba(255,255,255,.12)}
-  .progress{position:fixed;top:10px;left:10px;right:10px;height:4px;background:rgba(255,255,255,.16);z-index:20}
-  .progress span{display:block;height:100%;width:0;background:#fff;transition:.4s}
-  .small{font-size:.88rem;opacity:.8}
-  @media(max-width:520px){.photo-grid{grid-template-columns:1fr 1fr}.photo{min-height:145px}}
+  @keyframes fade{
+    from{
+      opacity:0;
+      transform:translateY(12px)
+    }
+    to{
+      opacity:1;
+      transform:none
+    }
+  }
+  .reveal{
+    margin-top:15px;
+    padding:18px;
+    border-radius:18px;
+    background:rgba(255,255,255,.12)
+  }
+  .progress{
+    position:fixed;
+    top:10px;
+    left:10px;
+    right:10px;
+    height:4px;
+    background:rgba(255,255,255,.16);
+    z-index:20
+  }
+  .progress span{
+    display:block;
+    height:100%;
+    width:0;
+    background:#fff;
+    transition:.4s
+  }
+  .small{
+    font-size:.88rem;
+    opacity:.8
+  }
+  @media(max-width:520px){
+    .photo-grid{grid-template-columns:1fr 1fr}
+    .photo{min-height:145px}
+  }
 </style>
 </head>
+
 <body>
 
 <div class="hearts" id="hearts"></div>
 <div class="progress"><span id="progress"></span></div>
 <div class="toast" id="toast"></div>
 
+
 <!-- PAGE 1 -->
 <section class="page active" id="page1">
   <div class="card fade">
     <div class="eyebrow">A birthday surprise</div>
-    
+
     <h2>Happy Birthday to my future wife ❤️😘</h2>
-    <p>Before you enter… prove that you remember the secret only my favorite girl should know. 😌</p>
-    <input id="password" type="password" placeholder="Our secret nickname">
+
+    <p>
+      Before you enter… prove that you remember the secret
+      only my favorite girl should know. 😌
+    </p>
+
+    <input
+      id="password"
+      type="password"
+      placeholder="Our secret nickname"
+    >
+
     <div>
       <button class="btn" onclick="checkPassword()">OK ❤️</button>
       <button class="btn dark" id="noBtn" onclick="nope()">No 😏</button>
     </div>
-    <p class="small">Hint: the password is one of our nicknames.</p>
+
+    <p class="small">
+      Hint: the password is one of our nicknames.
+    </p>
   </div>
 </section>
 
-<!-- PAGE 1 -->
-<section class="page" id="page1">
-  <div class="card fade"><br><br>
-    <div class="eyebrow">Our story</div>
-    <h2>Before Forever… There Was Us ❤️</h2>
-    <p>Before we talk about forever, let's go back to where “us” began.</p>
-    <p>We were just friends in college. Two people living their own lives, with absolutely no idea what life had planned for us.</p>
-    <p>Then somehow, life put us in the same company. Even there, we weren't immediately close. And then, slowly… something changed.</p>
-    <p>We talked more. We roamed around. We laughed. We shared things. And somewhere along the way, I found something I had never really felt with anyone else — <b>comfort.</b></p>
-    <p>With you, I could be completely myself. I felt safe. And you felt safe with me too. That feeling became something neither of us wanted to lose.</p>
-    <p>We were both so used to giving to other people that we didn't really know what it felt like to be on the receiving side. Then we found each other… and learned how beautiful it can be to receive care, attention and love too.</p>
-    <p>Two years gave us conversations, adventures, arguments, teasing, stupid moments, beautiful moments and memories I wouldn't trade for anything.</p>
-    <p>Then came the biggest step — our families. We stood together, talked, convinced them, and slowly turned “us” into a future that two families could share.</p>
-    <p><b>Two years behind us. A lifetime ahead of us.</b></p>
-    <p>Our story didn't begin with love at first sight. It began with friendship. Friendship became comfort. Comfort became love. And love is becoming forever. ❤️</p>
-    <button class="btn" onclick="nextPage()">Continue our story ❤️</button>
-  </div>
-</section>
 
 <!-- PAGE 2 -->
 <section class="page" id="page2">
   <div class="card fade">
-    <div class="eyebrow">Birthday Gift #1</div>
-    <h2>The Prettiest Dress 👗❤️</h2>
-    <p>On your birthday, I told you something very clearly:</p>
-    <p><b>“This isn't just a beginning… because I have a lot more gifts waiting for you.”</b></p>
-    <p>So here we are, continuing that promise.</p>
-    <div class="gift">
-      <div class="big-emoji">👗</div>
-      <h3>Your pretty dress</h3>
-      <p>Go wear it, pretty girl. ❤️</p>
-    </div>
-    <p>Don't rush this one. Put it on, look at yourself, smile a little… and then come back.</p>
-    <button class="btn" onclick="dressReady()">I'm Ready ❤️</button>
+    <div class="eyebrow">Our story</div>
+
+    <h2>Before Forever… There Was Us ❤️</h2>
+
+    <p>
+      Before we talk about forever, let's go back to where “us” began.
+    </p>
+
+    <p>
+      We were just friends in college. Two people living their own lives,
+      with absolutely no idea what life had planned for us.
+    </p>
+
+    <p>
+      Then somehow, life put us in the same company. Even there,
+      we weren't immediately close. And then, slowly… something changed.
+    </p>
+
+    <p>
+      We talked more. We roamed around. We laughed. We shared things.
+      And somewhere along the way, I found something I had never really
+      felt with anyone else — <b>comfort.</b>
+    </p>
+
+    <p>
+      With you, I could be completely myself. I felt safe.
+      And you felt safe with me too. That feeling became something
+      neither of us wanted to lose.
+    </p>
+
+    <p>
+      We were both so used to giving to other people that we didn't really
+      know what it felt like to be on the receiving side. Then we found
+      each other… and learned how beautiful it can be to receive care,
+      attention and love too.
+    </p>
+
+    <p>
+      Two years gave us conversations, adventures, arguments, teasing,
+      stupid moments, beautiful moments and memories I wouldn't trade
+      for anything.
+    </p>
+
+    <p>
+      Then came the biggest step — our families. We stood together,
+      talked, convinced them, and slowly turned “us” into a future
+      that two families could share.
+    </p>
+
+    <p>
+      <b>Two years behind us. A lifetime ahead of us.</b>
+    </p>
+
+    <p>
+      Our story didn't begin with love at first sight.
+      It began with friendship. Friendship became comfort.
+      Comfort became love. And love is becoming forever. ❤️
+    </p>
+
+    <button class="btn" onclick="nextPage()">
+      Continue our story ❤️
+    </button>
   </div>
 </section>
+
 
 <!-- PAGE 3 -->
 <section class="page" id="page3">
   <div class="card fade">
-    <div class="eyebrow">Birthday Gift #2</div>
-    <h2>That Little Green Memory 🌹🌱</h2>
+    <div class="eyebrow">Birthday Gift #1</div>
+
+    <h2>The Prettiest Dress 👗❤️</h2>
+
+    <p>
+      On your birthday, I told you something very clearly:
+    </p>
+
+    <p>
+      <b>
+        “This isn't just a beginning… because I have a lot more gifts
+        waiting for you.”
+      </b>
+    </p>
+
+    <p>
+      So here we are, continuing that promise.
+    </p>
+
     <div class="gift">
-  <img src="Bday26FlowerBouqu.jpeg" alt="Our birthday memory"
-       style="width:100%;max-width:500px;border-radius:20px;">
-  <p><b>Money plant + bouquets + roses 🌱🌹</b></p>
-</div>
-    <p>Do you remember that day?</p>
-    <p>Tell me honestly… how was it? I know you already told but What did you feel when you received it?</p>
-   <img src="birthday-flowers.jpg"
-     alt="Our birthday memory"
-     style="
-       width:100%;
-       max-width:520px;
-       border-radius:24px;
-       box-shadow:0 15px 40px rgba(0,0,0,.3);
-       display:block;
-       margin:0 auto 18px;
-     ">
-    <br>
-    <button class="btn" onclick="saveReview(4)">I Remember ❤️</button>
+      <div class="big-emoji">👗</div>
+
+      <h3>Your pretty dress</h3>
+
+      <p>Go wear it, pretty girl. ❤️</p>
+    </div>
+
+    <p>
+      Don't rush this one. Put it on, look at yourself,
+      smile a little… and then come back.
+    </p>
+
+    <button class="btn" onclick="dressReady()">
+      I'm Ready ❤️
+    </button>
   </div>
 </section>
+
 
 <!-- PAGE 4 -->
 <section class="page" id="page4">
   <div class="card fade">
-    <div class="eyebrow">Birthday Gift #3</div>
-    <h2>Four Little Pieces of Us 📸❤️</h2>
-    <p>Two years. Countless selfies. And somehow these four still feel like little pieces of home.</p>
-    <p><b>Now tell me… what do you feel when you look at them?</b></p>
-    <button class="btn" onclick="saveReview(5)">Next ❤️</button>
-    <p class="small">And please don't say “nothing”… I have photographic evidence. 😂</p>
+
+    <div class="eyebrow">Birthday Gift #2</div>
+
+    <h2>That Little Green Memory 🌹🌱</h2>
+
+    <div class="gift">
+
+      <img
+        src="Bday26FlowerBouqu.jpeg"
+        alt="Our birthday memory"
+        style="width:100%;max-width:500px;border-radius:20px;"
+      >
+
+      <p>
+        <b>Money plant + bouquets + roses 🌱🌹</b>
+      </p>
+
+    </div>
+
+    <p>Do you remember that day?</p>
+
+    <p>
+      Tell me honestly… how was it?
+      I know you already told but What did you feel
+      when you received it?
+    </p>
+
+    <img
+      src="birthday-flowers.jpg"
+      alt="Our birthday memory"
+      style="
+        width:100%;
+        max-width:520px;
+        border-radius:24px;
+        box-shadow:0 15px 40px rgba(0,0,0,.3);
+        display:block;
+        margin:0 auto 18px;
+      "
+    >
+
+    <br>
+
+    <button class="btn" onclick="saveReview()">
+      I Remember ❤️
+    </button>
+
   </div>
 </section>
+
 
 <!-- PAGE 5 -->
 <section class="page" id="page5">
   <div class="card fade">
-    <div class="eyebrow">A few days after your birthday</div>
-    <h2>Your Teddy Bear 🧸❤️</h2>
-    <div class="big-emoji">🧸</div>
-    <p>Remember our “teddy bear” words?</p>
-    <p>You are my teddy bear. I am your teddy bear. And apparently being your teddy came with unlimited permission to annoy you, tease you and disturb you whenever I wanted. 😂❤️</p>
-    <p>But there was something sweeter behind this little teddy.</p>
-    <p><b>Whenever I'm not beside you, I wanted you to have something that reminds you of me.</b></p>
-    <p>So until I can be there to annoy you myself… this little guy has an important job. 🧸</p>
-    <button class="btn" onclick="saveReview(6)">Okay What's Next ❤️</button>
+
+    <div class="eyebrow">Birthday Gift #3</div>
+
+    <h2>Four Little Pieces of Us 📸❤️</h2>
+
+    <p>
+      Two years. Countless selfies.
+      And somehow these four still feel like little pieces of home.
+    </p>
+
+    <p>
+      <b>
+        Now tell me… what do you feel when you look at them?
+      </b>
+    </p>
+
+    <button class="btn" onclick="saveReview()">
+      Next ❤️
+    </button>
+
+    <p class="small">
+      And please don't say “nothing”…
+      I have photographic evidence. 😂
+    </p>
+
   </div>
 </section>
 
@@ -210,259 +450,544 @@
 <!-- PAGE 6 -->
 <section class="page" id="page6">
   <div class="card fade">
-    <div class="eyebrow">A gift you've been waiting for</div>
-    <h2>Okay… One More Guess 👀❤️</h2>
 
-    <p>Before we get to the pretty little details… I have something special for you.</p>
+    <div class="eyebrow">The gifts aren't over</div>
 
-    <p><b>You've been waiting for this one for quite a long time. 😌</b></p>
+    <h2>A Pretty Dress Needs Pretty Details 💅</h2>
+
+    <div class="big-emoji">💅</div>
+
+    <p>
+      Okay, Hotty the dress is pretty.
+    </p>
+
+    <p>
+      But a pretty dress can't be left alone, can it? 😌
+    </p>
+
+    <p>
+      So here's something for those pretty little hands.
+    </p>
 
     <div class="gift">
-      <p>✨ <b>Clue #1:</b> It's something you can wear.</p>
-      <p>✨ <b>Clue #2:</b> It makes a beautiful little sound when you move your hands. ❤️</p>
-      <p>✨ <b>Clue #3:</b> You were waiting for me to bring this for you… and yes, I remembered. 😏</p>
-      <p>✨ <b>Clue #4:</b> It looks even prettier when you wear it with something pretty.</p>
-      <p>✨ <b>Final clue:</b> There may be a little <i>chinnnn… chinnnn…</i> coming your way. 😂❤️</p>
+
+      <h3>Nail Polish 💅</h3>
+
+      <p>
+        Make them even prettier…
+        because I have a feeling I'm going to be looking
+        at them a lot. ❤️
+      </p>
+
     </div>
 
-    <p><b>So cutieee what do you think I brought for you? 👀</b></p>
+    <button class="btn" onclick="nextPage()">
+      Okay, what's next? 😏
+    </button>
 
-    <button class="btn" onclick="nextPage()">Okay… What's next</button>
   </div>
 </section>
+
 
 <!-- PAGE 7 -->
 <section class="page" id="page7">
   <div class="card fade">
-    <div class="eyebrow">The gifts aren't over</div>
-    <h2>A Pretty Dress Needs Pretty Details 💅</h2>
-    <div class="big-emoji">💅</div>
-    <p>Okay, Hotty the dress is pretty.</p>
-    <p>But a pretty dress can't be left alone, can it? 😌</p>
-    <p>So here's something for those pretty little hands.</p>
+
+    <div class="eyebrow">One more little detail</div>
+
+    <h2>For Those Lips… 💄💋</h2>
+
+    <div class="big-emoji">💄</div>
+
+    <p>
+      The dress is pretty. The nails are pretty.
+    </p>
+
+    <p>
+      But there was one little thing missing.
+    </p>
+
+    <p>
+      Something for the lips that have made me smile,
+      blush, and sometimes completely forget what I was
+      about to say. 😏❤️
+    </p>
+
     <div class="gift">
-      <h3>Nail Polish 💅</h3>
-      <p>Make them even prettier… because I have a feeling I'm going to be looking at them a lot. ❤️</p>
+
+      <h3>Lipstick 💄</h3>
+
+      <p>
+        Put it on… and try not to make me fall for you
+        all over again. 💋
+      </p>
+
     </div>
-    <button class="btn" onclick="nextPage()">Okay, what's next? 😏</button>
+
+    <button class="btn" onclick="nextPage()">
+      I think I'm ready 😌❤️
+    </button>
+
   </div>
 </section>
+
 
 <!-- PAGE 8 -->
 <section class="page" id="page8">
   <div class="card fade">
-    <div class="eyebrow">One more little detail</div>
-    <h2>For Those Lips… 💄💋</h2>
-    <div class="big-emoji">💄</div>
-    <p>The dress is pretty. The nails are pretty.</p>
-    <p>But there was one little thing missing.</p>
-    <p>Something for the lips that have made me smile, blush, and sometimes completely forget what I was about to say. 😏❤️</p>
+
+    <div class="eyebrow">Mystery Gift</div>
+
+    <h2>Guess Your Next Gift 👀</h2>
+
+    <p>
+      Okay, future wife… let's see how well you know me. 😏
+    </p>
+
     <div class="gift">
-      <h3>Lipstick 💄</h3>
-      <p>Put it on… and try not to make me fall for you all over again. 💋</p>
+
+      <p>
+        Clue #1: It has many pieces of <i>us</i> inside it.
+      </p>
+
+      <p>
+        Clue #2: You can't wear it, you can't hug it,
+        and unfortunately… it can't annoy you like I do. 😂
+      </p>
+
+      <p>
+        Clue #3: It contains memories I never want us to forget.
+      </p>
+
+      <p>
+        Clue #4: You can hold it in your hands,
+        but what's inside can take you back through our story. ❤️
+      </p>
+
     </div>
-    <button class="btn" onclick="nextPage()">I think I'm ready 😌❤️</button>
+
+    <button class="btn" onclick="revealMagazine()">
+      Make Your Guess
+    </button>
+
+    <div id="magReveal" class="reveal hidden">
+
+      <h3>Okay… enough guessing. 😌</h3>
+
+      <p>
+        Now look beside you / turn around… ❤️
+      </p>
+
+      <p>
+        <b>
+          📖 Your Couple Magazine —
+          a forever memory made by me, for us.
+        </b>
+      </p>
+
+      <button class="btn" onclick="nextPage()">
+        I found it ❤️
+      </button>
+
+    </div>
+
   </div>
 </section>
+
 
 <!-- PAGE 9 -->
 <section class="page" id="page9">
   <div class="card fade">
-    <div class="eyebrow">Something tiny</div>
-    <h2>Another Little Teddy 🧸</h2>
-    <div class="big-emoji">🧸</div>
-    <p>Not everything I give you has to be big.</p>
-    <p>Sometimes a little teddy is enough to say:</p>
-    <p><b>“I'm thinking about you.”</b> ❤️</p>
-    <p>Whenever I'm not beside you, keep this little one close.</p>
-    <p>Because until I can annoy you in person, someone has to take care of you for me. 😂❤️</p>
-    <button class="btn" onclick="nextPage()">Keep my little teddy close ❤️</button>
+
+    <div class="eyebrow">A little preview of forever</div>
+
+    <h2>There's One More Thing…</h2>
+
+    <p>
+      This one isn't just something I bought for you.
+    </p>
+
+    <p>
+      <b>It needs two people.</b>
+    </p>
+
+    <p>
+      It needs your hand… and apparently,
+      it needs me to do something important with it. 😌
+    </p>
+
+    <div class="gift">
+
+      <p>
+        Hint #1: You don't keep this one in a box forever.
+      </p>
+
+      <p>
+        Hint #2: There's a special place waiting for it.
+      </p>
+
+      <p>
+        Hint #3: One day, something much bigger will take its place…
+        but for now, let's start with this. ❤️
+      </p>
+
+    </div>
+
+    <p>
+      <b>
+        Come here, future wife. Give me your hand. ❤️
+      </b>
+    </p>
+
+    <button
+      class="btn"
+      onclick="ringDone(); setTimeout(nextPage,700)"
+    >
+      Done — it's on my finger ❤️
+    </button>
+
+    <p id="ringMsg" class="reveal hidden">
+      Not our wedding ring. Not yet.
+      Just a tiny little reminder of where we're heading.
+      One day, I'll look back at this moment and remember
+      that our forever had already started. 💍❤️
+    </p>
+
+    <button class="btn" onclick="nextPage()">
+      Continue to the Naughty Rounds 😈
+    </button>
+
   </div>
 </section>
+
 
 <!-- PAGE 10 -->
 <section class="page" id="page10">
   <div class="card fade">
-    <div class="eyebrow">Mystery Gift</div>
-    <h2>Guess Your Next Gift 👀</h2>
-    <p>Okay, future wife… let's see how well you know me. 😏</p>
-    <div class="gift">
-      <p>Clue #1: It has many pieces of <i>us</i> inside it.</p>
-      <p>Clue #2: You can't wear it, you can't hug it, and unfortunately… it can't annoy you like I do. 😂</p>
-      <p>Clue #3: It contains memories I never want us to forget.</p>
-      <p>Clue #4: You can hold it in your hands, but what's inside can take you back through our story. ❤️</p>
-    </div>
-    <button class="btn" onclick="revealMagazine()">Make Your Guess</button>
-    <div id="magReveal" class="reveal hidden">
-      <h3>Okay… enough guessing. 😌</h3>
-      <p>Now look beside you / turn around… ❤️</p>
-      <p><b>📖 Your Couple Magazine — a forever memory made by me, for us.</b></p>
-      <button class="btn" onclick="nextPage()">I found it ❤️</button>
-    </div>
-  </div>
-</section>
 
-<!-- PAGE 11 -->
-<section class="page" id="page11">
-  <div class="card fade">
-    <div class="eyebrow">A little preview of forever</div>
-    <h2>There's One More Thing… </h2>
-    <p>This one isn't just something I bought for you.</p>
-    <p><b>It needs two people.</b></p>
-    <p>It needs your hand… and apparently, it needs me to do something important with it. 😌</p>
-    <div class="gift">
-      <p>Hint #1: You don't keep this one in a box forever.</p>
-      <p>Hint #2: There's a special place waiting for it.</p>
-      <p>Hint #3: One day, something much bigger will take its place… but for now, let's start with this. ❤️</p>
-    </div>
-    <p><b>Come here, future wife. Give me your hand. ❤️</b></p>
-    <button class="btn" onclick="ringDone(); setTimeout(nextPage,700)">Done — it's on my finger ❤️</button>
-    <p id="ringMsg" class="reveal hidden">Not our wedding ring. Not yet. Just a tiny little reminder of where we're heading. One day, I'll look back at this moment and remember that our forever had already started. 💍❤️</p>
-    <button class="btn" onclick="nextPage()">Continue to the Naughty Rounds 😈</button>
-  </div>
-</section>
-
-<!-- PAGE 12 -->
-<section class="page" id="page12">
-  <div class="card fade">
     <div class="eyebrow">The Naughty Rounds🫦🫦</div>
+
     <h2>Okay… The Rules Are Changing 😏🔥</h2>
-    <p>We've talked about our memories.</p>
-    <p>We've opened our gifts.</p>
-    <p>We've remembered how we became us.</p>
-    <p><b>Now comes the mischievous side of us.</b> 😈</p>
+
+    <p>
+      We've talked about our memories.
+    </p>
+
+    <p>
+      We've opened our gifts.
+    </p>
+
+    <p>
+      We've remembered how we became us.
+    </p>
+
+    <p>
+      <b>Now comes the mischievous side of us.</b> 😈
+    </p>
+
     <div class="gift">
+
       <p>💋 Kiss round</p>
       <p>❤️ Hug & cuddle round</p>
       <p>😈 Tease each other</p>
       <p>🎭 Flirty scenario round</p>
       <p>🎲 Couple challenges</p>
       <p>🙈 “You choose” round</p>
+
     </div>
-    <p>From here, the challenges become more intimate and playful. Keep it mutual, comfortable and fun. ❤️</p>
-    <button class="btn" onclick="startNaughty()">I'm Ready 😈</button>
+
+    <p>
+      From here, the challenges become more intimate
+      and playful. Keep it mutual, comfortable and fun. ❤️
+    </p>
+
+    <button class="btn" onclick="startNaughty()">
+      I'm Ready 😈
+    </button>
+
     <div id="naughtyReveal" class="reveal hidden">
+
       <h3>Round 1 — Pick Your Trouble 🔥</h3>
+
       <div class="choice">
-        <button class="btn" onclick="naughtyToast('Give me a long hug and don’t let go until I laugh. ❤️')">Hug ❤️</button>
-        <button class="btn" onclick="naughtyToast('Give me a sweet kiss… then one more because the first one wasn’t enough. 💋')">Kiss 💋</button>
-        <button class="btn" onclick="naughtyToast('Whisper one thing you secretly find irresistible about me. 😏')">Whisper 😏</button>
-        <button class="btn" onclick="naughtyToast('Choose a playful scenario you both feel comfortable trying. 🔥')">Scenario 🔥</button>
+
+        <button
+          class="btn"
+          onclick="naughtyToast('Give me a long hug and don’t let go until I laugh. ❤️')"
+        >
+          Hug ❤️
+        </button>
+
+        <button
+          class="btn"
+          onclick="naughtyToast('Give me a sweet kiss… then one more because the first one wasn’t enough. 💋')"
+        >
+          Kiss 💋
+        </button>
+
+        <button
+          class="btn"
+          onclick="naughtyToast('Whisper one thing you secretly find irresistible about me. 😏')"
+        >
+          Whisper 😏
+        </button>
+
+        <button
+          class="btn"
+          onclick="naughtyToast('Choose a playful scenario you both feel comfortable trying. 🔥')"
+        >
+          Scenario 🔥
+        </button>
+
       </div>
+
     </div>
+
   </div>
 </section>
 
+
 <script>
-const TOTAL=13;
-let current=1;
-let audio=null;
+
+const TOTAL = 10;
+let current = 1;
+let audio = null;
+
 
 function makeHearts(){
-  const wrap=document.getElementById('hearts');
-  for(let i=0;i<28;i++){
-    const h=document.createElement('span');
-    h.className='float-heart';
-    h.textContent=Math.random()>.15?'♥':'♡';
-    h.style.left=(Math.random()*100)+'%';
-    h.style.fontSize=(12+Math.random()*28)+'px';
-    h.style.animationDuration=(6+Math.random()*9)+'s';
-    h.style.animationDelay=(-Math.random()*12)+'s';
-    h.style.transform=`rotate(${Math.random()*180}deg)`;
+
+  const wrap = document.getElementById('hearts');
+
+  for(let i = 0; i < 28; i++){
+
+    const h = document.createElement('span');
+
+    h.className = 'float-heart';
+
+    h.textContent = Math.random() > .15 ? '♥' : '♡';
+
+    h.style.left = (Math.random() * 100) + '%';
+
+    h.style.fontSize = (12 + Math.random() * 28) + 'px';
+
+    h.style.animationDuration = (6 + Math.random() * 9) + 's';
+
+    h.style.animationDelay = (-Math.random() * 12) + 's';
+
+    h.style.transform =
+      `rotate(${Math.random() * 180}deg)`;
+
     wrap.appendChild(h);
   }
 }
+
+
 makeHearts();
 
+
 function showToast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
+
+  const t = document.getElementById('toast');
+
+  t.textContent = msg;
+
+  t.classList.add('show');
+
   clearTimeout(window.toastTimer);
-  window.toastTimer=setTimeout(()=>t.classList.remove('show'),2300);
+
+  window.toastTimer =
+    setTimeout(
+      () => t.classList.remove('show'),
+      2300
+    );
 }
+
 
 function checkPassword(){
-  const value=document.getElementById('password').value.trim().toLowerCase();
-  // Change these to your actual nicknames/passwords.
-  const valid=['Mylu','mylu','Macha','macha'];
+
+  const value =
+    document
+      .getElementById('password')
+      .value
+      .trim()
+      .toLowerCase();
+
+  const valid = [
+    'mylu',
+    'macha'
+  ];
+
   if(valid.includes(value)){
+
     goTo(2);
+
   }else{
+
     showToast('Ohhh You forgot! 😂❤️');
+
   }
 }
+
 
 function nope(){
-  const btn=document.getElementById('noBtn');
-  btn.style.position='fixed';
-  btn.style.left=(10+Math.random()*75)+'%';
-  btn.style.top=(15+Math.random()*70)+'%';
-  showToast('You are not escaping this one. 😌❤️');
+
+  const btn =
+    document.getElementById('noBtn');
+
+  btn.style.position = 'fixed';
+
+  btn.style.left =
+    (10 + Math.random() * 75) + '%';
+
+  btn.style.top =
+    (15 + Math.random() * 70) + '%';
+
+  showToast(
+    'You are not escaping this one. 😌❤️'
+  );
 }
+
 
 function goTo(n){
-  const target=document.getElementById('page'+n);
+
+  const target =
+    document.getElementById('page' + n);
+
   if(!target) return;
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+
+  document
+    .querySelectorAll('.page')
+    .forEach(
+      p => p.classList.remove('active')
+    );
+
   target.classList.add('active');
-  target.scrollTop=0;
-  current=n;
-  document.getElementById('progress').style.width=((n-1)/(TOTAL-1)*100)+'%';
-  if(n===2) startPageMusic();
-  else stopPageMusic();
+
+  target.scrollTop = 0;
+
+  current = n;
+
+  document.getElementById('progress').style.width =
+    ((n - 1) / (TOTAL - 1) * 100) + '%';
+
+  if(n === 2){
+
+    startPageMusic();
+
+  }else{
+
+    stopPageMusic();
+
+  }
 }
+
 
 function nextPage(){
-  if(current<TOTAL) goTo(current+1);
-}
-function dressReady(){ showToast('Okay pretty girl… now let’s continue. ❤️'); setTimeout(nextPage,700); }
-function saveReview(n){
-  showToast('I’m keeping that answer in my heart. ❤️');
-  setTimeout(nextPage,800);
-}
 
-function guessBangles(){
-  const value=document.getElementById('bangleGuess').value.trim().toLowerCase();
-  const box=document.getElementById('bangleReveal');
-  if(!value){
-    showToast('Come on… make a guess first. 😂❤️');
-    return;
-  }
+  if(current < TOTAL){
 
-  if(value.includes('bangle') || value.includes('glass') || value.includes('valayal')){
-    box.classList.remove('hidden');
-    setTimeout(()=>box.scrollIntoView({behavior:'smooth',block:'center'}),50);
-  }else{
-    showToast('Hmmmm… think about the sound they make. 😏❤️');
+    goTo(current + 1);
+
   }
 }
+
+
+function dressReady(){
+
+  showToast(
+    'Okay pretty girl… now let’s continue. ❤️'
+  );
+
+  setTimeout(
+    nextPage,
+    700
+  );
+}
+
+
+function saveReview(){
+
+  showToast(
+    'I’m keeping that answer in my heart. ❤️'
+  );
+
+  setTimeout(
+    nextPage,
+    800
+  );
+}
+
 
 function revealMagazine(){
-  document.getElementById('magReveal').classList.remove('hidden');
+
+  document
+    .getElementById('magReveal')
+    .classList.remove('hidden');
+
 }
+
+
 function ringDone(){
-  document.getElementById('ringMsg').classList.remove('hidden');
+
+  document
+    .getElementById('ringMsg')
+    .classList.remove('hidden');
+
 }
+
+
 function startNaughty(){
-  const box=document.getElementById('naughtyReveal');
+
+  const box =
+    document.getElementById('naughtyReveal');
+
   box.classList.remove('hidden');
-  setTimeout(()=>box.scrollIntoView({behavior:'smooth',block:'center'}),50);
+
+  setTimeout(
+    () => box.scrollIntoView({
+      behavior:'smooth',
+      block:'center'
+    }),
+    50
+  );
+
 }
-function naughtyToast(msg){ showToast(msg); }
+
+
+function naughtyToast(msg){
+
+  showToast(msg);
+
+}
+
 
 function startPageMusic(){
-  // Optional: put page2.mp3 in the same GitHub folder and uncomment the next lines.
+
+  // Optional:
+  // Put page2.mp3 in the same GitHub folder
+  // and uncomment the next lines.
+
   // audio = audio || new Audio('page2.mp3');
-  // audio.loop=true;
-  // audio.volume=0.35;
+  // audio.loop = true;
+  // audio.volume = 0.35;
   // audio.play().catch(()=>{});
+
 }
+
+
 function stopPageMusic(){
+
   if(audio){
+
     audio.pause();
-    audio.currentTime=0;
+
+    audio.currentTime = 0;
+
   }
+
 }
+
 </script>
+
 </body>
 </html>
