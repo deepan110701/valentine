@@ -115,8 +115,8 @@
   </div>
 </section>
 
-<!-- PAGE 2 -->
-<section class="page" id="page2">
+<!-- PAGE 1 -->
+<section class="page" id="page1">
   <div class="card fade"><br><br>
     <div class="eyebrow">Our story</div>
     <h2>Before Forever… There Was Us ❤️</h2>
@@ -134,8 +134,8 @@
   </div>
 </section>
 
-<!-- PAGE 3 -->
-<section class="page" id="page3">
+<!-- PAGE 2 -->
+<section class="page" id="page2">
   <div class="card fade">
     <div class="eyebrow">Birthday Gift #1</div>
     <h2>The Prettiest Dress 👗❤️</h2>
@@ -152,8 +152,8 @@
   </div>
 </section>
 
-<!-- PAGE 4 -->
-<section class="page" id="page4">
+<!-- PAGE 3 -->
+<section class="page" id="page3">
   <div class="card fade">
     <div class="eyebrow">Birthday Gift #2</div>
     <h2>That Little Green Memory 🌹🌱</h2>
@@ -179,8 +179,8 @@
   </div>
 </section>
 
-<!-- PAGE 5 -->
-<section class="page" id="page5">
+<!-- PAGE 4 -->
+<section class="page" id="page4">
   <div class="card fade">
     <div class="eyebrow">Birthday Gift #3</div>
     <h2>Four Little Pieces of Us 📸❤️</h2>
@@ -191,8 +191,8 @@
   </div>
 </section>
 
-<!-- PAGE 6 -->
-<section class="page" id="page6">
+<!-- PAGE 5 -->
+<section class="page" id="page5">
   <div class="card fade">
     <div class="eyebrow">A few days after your birthday</div>
     <h2>Your Teddy Bear 🧸❤️</h2>
@@ -203,6 +203,31 @@
     <p><b>Whenever I'm not beside you, I wanted you to have something that reminds you of me.</b></p>
     <p>So until I can be there to annoy you myself… this little guy has an important job. 🧸</p>
     <button class="btn" onclick="saveReview(6)">Okay What's Next ❤️</button>
+  </div>
+</section>
+
+
+<!-- PAGE 6 -->
+<section class="page" id="page6">
+  <div class="card fade">
+    <div class="eyebrow">A gift you've been waiting for</div>
+    <h2>Okay… One More Guess 👀❤️</h2>
+
+    <p>Before we get to the pretty little details… I have something special for you.</p>
+
+    <p><b>You've been waiting for this one for quite a long time. 😌</b></p>
+
+    <div class="gift">
+      <p>✨ <b>Clue #1:</b> It's something you can wear.</p>
+      <p>✨ <b>Clue #2:</b> It makes a beautiful little sound when you move your hands. ❤️</p>
+      <p>✨ <b>Clue #3:</b> You were waiting for me to bring this for you… and yes, I remembered. 😏</p>
+      <p>✨ <b>Clue #4:</b> It looks even prettier when you wear it with something pretty.</p>
+      <p>✨ <b>Final clue:</b> There may be a little <i>chinnnn… chinnnn…</i> coming your way. 😂❤️</p>
+    </div>
+
+    <p><b>So cutieee what do you think I brought for you? 👀</b></p>
+
+    <button class="btn" onclick="nextPage()">Okay… now give me the nail polish 💅</button>
   </div>
 </section>
 
@@ -291,8 +316,9 @@
       <p>Hint #3: One day, something much bigger will take its place… but for now, let's start with this. ❤️</p>
     </div>
     <p><b>Come here, future wife. Give me your hand. ❤️</b></p>
-    <button class="btn" onclick="ringDone()">Done — it's on my finger ❤️</button>
+    <button class="btn" onclick="ringDone(); setTimeout(nextPage,700)">Done — it's on my finger ❤️</button>
     <p id="ringMsg" class="reveal hidden">Not our wedding ring. Not yet. Just a tiny little reminder of where we're heading. One day, I'll look back at this moment and remember that our forever had already started. 💍❤️</p>
+    <button class="btn" onclick="nextPage()">Continue to the Naughty Rounds 😈</button>
   </div>
 </section>
 
@@ -329,7 +355,7 @@
 </section>
 
 <script>
-const TOTAL=12;
+const TOTAL=13;
 let current=1;
 let audio=null;
 
@@ -376,14 +402,15 @@ function nope(){
 }
 
 function goTo(n){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const target=document.getElementById('page'+n);
+  if(!target) return;
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   target.classList.add('active');
   target.scrollTop=0;
   current=n;
   document.getElementById('progress').style.width=((n-1)/(TOTAL-1)*100)+'%';
   if(n===2) startPageMusic();
-  else if(n!==2) stopPageMusic();
+  else stopPageMusic();
 }
 
 function nextPage(){
@@ -394,6 +421,23 @@ function saveReview(n){
   showToast('I’m keeping that answer in my heart. ❤️');
   setTimeout(nextPage,800);
 }
+
+function guessBangles(){
+  const value=document.getElementById('bangleGuess').value.trim().toLowerCase();
+  const box=document.getElementById('bangleReveal');
+  if(!value){
+    showToast('Come on… make a guess first. 😂❤️');
+    return;
+  }
+
+  if(value.includes('bangle') || value.includes('glass') || value.includes('valayal')){
+    box.classList.remove('hidden');
+    setTimeout(()=>box.scrollIntoView({behavior:'smooth',block:'center'}),50);
+  }else{
+    showToast('Hmmmm… think about the sound they make. 😏❤️');
+  }
+}
+
 function revealMagazine(){
   document.getElementById('magReveal').classList.remove('hidden');
 }
@@ -401,7 +445,9 @@ function ringDone(){
   document.getElementById('ringMsg').classList.remove('hidden');
 }
 function startNaughty(){
-  document.getElementById('naughtyReveal').classList.remove('hidden');
+  const box=document.getElementById('naughtyReveal');
+  box.classList.remove('hidden');
+  setTimeout(()=>box.scrollIntoView({behavior:'smooth',block:'center'}),50);
 }
 function naughtyToast(msg){ showToast(msg); }
 
